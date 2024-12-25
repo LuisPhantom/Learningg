@@ -33,7 +33,7 @@ key = AAGDzNK3t0ktP86x06LuVTfAyETB4dloLPU  # Bạn có thể thay đổi khóa n
 encrypted_content = xor_encrypt_decrypt(script_content, key)
 
 # Lưu nội dung mã hóa vào tệp
-with open("AAGDzNK3t0ktP86x06LuVTfAyETB4dloLPU", "w", encoding="utf-8") as encrypted_file:
+with open("encrypted_file", "w", encoding="utf-8") as encrypted_file:
     encrypted_file.write(encrypted_content)
 
 print(f"Nội dung mã hóa đã được lưu vào tệp 'AAGDzNK3t0ktP86x06LuVTfAyETB4dloLPU.txt'")
